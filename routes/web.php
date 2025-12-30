@@ -51,7 +51,8 @@ Route::middleware(['auth'])->group(function () {
 //Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/mural', [App\Http\Controllers\MuralController::class, 'index'])->name('mural');
+
+Route::get('/mural', [App\Http\Controllers\MuralController::class, 'index'])->name('mural');//rota do iago
 
 
 require __DIR__.'/auth.php';
