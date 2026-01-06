@@ -1,0 +1,217 @@
+:root{
+   --orange:#FF6600;
+  --orange-soft:#ff8a3d;
+  --green:#A7CF45;
+  --blue:#DCEFFF;
+  --blue-dark:#1e3a8a;
+  --bg:#f4f7fb;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --border:rgba(0,0,0,.08);
+
+  --radius-xl:22px;
+  --radius-lg:16px;
+  --shadow-sm:0 8px 20px rgba(0,0,0,.08);
+  --shadow-lg:0 20px 45px rgba(0,0,0,.15);
+}
+
+body{
+  margin:0;
+  font-family: Inter, system-ui, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* ===== HEADER ===== */
+.mural-header{
+  background: linear-gradient(90deg, var(--orange), #ff7a1a);
+  color:#fff;
+  border-bottom: 10px #A7CF45 solid ;
+}
+
+/* .mural-header::after{
+  content:"";
+  position:absolute;
+  bottom:-1px;
+  left:0;
+  width:100%;
+  height:70px;
+  background:#fff;
+  border-top-left-radius:40px;
+  border-top-right-radius:40px;
+} */
+
+.mural-header h1{
+  font-weight: 800;
+  letter-spacing: .2px;
+  align-self: center;
+  margin: auto;
+}
+
+.mural-header p{
+  opacity:.95;
+  align-self: center;
+  margin: auto;
+}
+
+.mural-header img{
+    filter: brightness(0) invert(1);
+    margin: auto;
+    height: 60px;
+}
+
+/* ===== SECTION TITLE ===== */
+.section-wrap{
+  display:flex;
+  align-items:flex-start;
+  gap:1rem;
+  margin:3rem 0 1.5rem;
+}
+
+.section-line{
+  width:6px;
+  height:100%;
+  background:var(--green);
+  border-radius:4px;
+}
+
+.section-title h2{
+  font-size:1.5rem;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:900;
+  margin:0;
+}
+
+.section-title span{
+  font-size:.75rem;
+  color:var(--muted);
+}
+
+/* ===== CARD ===== */
+.mural-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-left:6px solid var(--orange);
+  border-radius:12px;
+  padding:1.2rem;
+  height:100%;
+  text-decoration:none;
+  color:inherit;
+  transition:.2s ease;
+}
+
+.mural-card:hover{
+  border-left-color:var(--green);
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transform:translateY(-4px);
+}
+
+.mural-icon{
+  width:80px;
+  height:80px;
+  border-radius:8px;
+  background:var(--blue);
+  display:grid;
+  place-items:center;
+  margin-bottom:.9rem;
+}
+
+.mural-icon img{
+    width:70px;
+    transition: .4s;
+}
+
+.mural-card:hover img{
+    width: 76px;
+    transition: .4s;
+    /* filter: invert(86%) sepia(13%) saturate(1143%) hue-rotate(33deg) brightness(90%) contrast(91%); */
+}
+
+.mural-fallback{
+  font-weight:900;
+  color:var(--orange);
+  font-size:1.1rem;
+}
+
+/* ===== TEXT ===== */
+.mural-title{
+  font-size:1.15rem;
+  font-weight:900;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  margin:0 0 .3rem;
+}
+
+.mural-sub{
+  font-size:.78rem;
+  color:var(--muted);
+  line-height:1.4;
+}
+
+/* ===== FOOTER ===== */
+.mural-footer{
+  margin-top:4rem;
+  padding:2rem 0;
+  text-align:center;
+  font-size:.8rem;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+}
+
+
+.mural-card{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* evita qualquer “vazamento” visual em cantos arredondados */
+.mural-card{
+  overflow: hidden;
+}
+
+/* deixa o ícone bem comportado e alinhado */
+.mural-icon{
+  margin: 0 0 .9rem 0;
+}
+
+/* imagens não “pulam” linha nem criam espaços estranhos */
+.mural-icon img{
+  display: block;
+}
+
+.mural-card{
+  padding-left: 1.35rem; /* um pouco mais que 1.2rem */
+}
+
+
+.mural-card{
+  background: #ffffff;
+  border: 1px solid #e6e8ec;
+  border-left: 6px solid var(--orange);
+  border-radius: 12px;
+  padding: 1.35rem;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+
+  /* NOVO: sombra em camadas */
+  box-shadow:
+    0 2px 6px rgba(0,0,0,.04),
+    0 12px 28px rgba(0,0,0,.08);
+
+  transition: transform .2s ease, box-shadow .2s ease, border-left-color .2s ease;
+}
+
+.mural-card:hover{
+  transform: translateY(-4px);
+  box-shadow:
+    0 6px 14px rgba(0,0,0,.08),
+    0 20px 40px rgba(0,0,0,.14);
+  border-left-color: var(--green);
+}
+
+body{
+  background: #f3f5f9;
+}
