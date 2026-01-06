@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CalendarioEscolar extends Model
+class Credenciamento extends Model
 {
     use HasFactory;
 
-    protected $table = 'calendario_escolar';
+    protected $table = 'credenciamentos';
     
-    public $fillable = ['url_pdf', 'filial_id','title'];
+    public $fillable = ['url', 'filial_id','title'];
 
     public $timestamps = true;
 }

@@ -8,11 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Servico extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
     
     protected $table = 'servicos';
-    public $fillable = ['filial_id','descriminacao', 'valor', 'mensalidades_url_pdf', 'deleted_at'];
+    public $fillable = ['filial_id','descriminacao', 'valor', 'mensalidades_url_pdf'];
     public $timestamps = true;
-
-    protected $hidden = ['deleted_at'];
 }

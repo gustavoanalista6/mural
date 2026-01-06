@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class InformacaoGeral extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
     protected $table = 'informacao';
-    public $fillable = ['titulo', 'icone_informacao', 'filial_id', 'habilitado', 'deleted_at'];
+    public $fillable = ['title', 'icone', 'filial_id', 'enable'];
     public $timestamps = true;
 
     public function filial()

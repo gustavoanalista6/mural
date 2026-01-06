@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Curso extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $table = 'cursos';
-    public $fillable = ['nome_curso', 'url_logo', 'filial_id', 'curso_id', 'deleted_at'];
+    public $fillable = ['filial_id', 'title', 'subtitle', 'icon'];
     public $timestamps = true;
-    protected $hidden = ['deleted_at'];
+    
 }

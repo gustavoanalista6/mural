@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MapaSala extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
-        public $fillable = ['titulo', 'url_pdf', 'deleted_at'];
+    public $fillable = ['titulo', 'url_pdf'];
 }

@@ -8,11 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Legislacao extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $table = 'legislacao';
-    public $fillable = ['titulo', 'url_pdf', 'filial_id', 'deleted_at'];
+    public $fillable = ['titulo', 'url_pdf', 'filial_id'];
     public $timestamps = true;
-
-       protected $hidden = ['deleted_at'];
 }

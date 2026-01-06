@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Filial extends Model
+class Pagina extends Model
 {
     use HasFactory;
 
-    protected $table = 'filiais';
-    public $fillable = ['nome_filial', 'foto_url_filial'];
-    public $timestamps = true;
+    protected $table = 'paginas';
 
+    public $fillable = ['url_pdf', 'path_file'];
 }
