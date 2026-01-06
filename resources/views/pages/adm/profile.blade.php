@@ -14,6 +14,7 @@
                 <input
                     type="text"
                     name="floating_name"
+                     value="{{$usuario->name}}"
                     id="floating_name"
                     class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-orange-500 peer"
                     placeholder=" "
@@ -36,6 +37,7 @@
                     id="floating_email"
                     class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-orange-500 peer"
                     placeholder=" "
+                    value="{{$usuario->email}}"
                     required
                 />
                 <label
@@ -50,6 +52,7 @@
             <!-- Senha -->
             <div class="relative z-0 w-full group">
                 <input
+                 
                     type="password"
                     name="floating_password"
                     id="floating_password"

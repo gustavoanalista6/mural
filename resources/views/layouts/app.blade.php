@@ -13,11 +13,11 @@
         @include('components.sidebar')
         
         <div class="p-4 sm:ml-64 min-h-screen flex flex-col" id="content">
-            @include('pages.dashboard')
-            @include('pages.user')
-            @include('pages.curso')
-            @include('pages.filial')
-            @include('pages.profile')
+          
+            @include('pages.adm.user')
+            @include('pages.adm.curso')
+            @include('pages.adm.filial')
+            @include('pages.adm.profile')
             @include('components.footer')
         </div>
 
