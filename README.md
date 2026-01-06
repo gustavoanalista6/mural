@@ -2,7 +2,7 @@
 filiais
 
 
-/TODO coisas que cadastra por ti de cada filial:
+//TODO coisas que cadastra por ti de cada filial:
 calendario escolar
 credenciamento
 cursos
@@ -15,3 +15,9 @@ paginas
 servicos
 usuarios
 
+
+//TODO - Melhor estilização de mural e admin
+
+//TODO - MUDAR NAVEGAÇÃO NAS PÁGINAS DO PAINEL ADMINISTRATIVO
+
+//TESTE 
