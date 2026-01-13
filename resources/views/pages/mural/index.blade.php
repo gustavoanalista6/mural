@@ -15,7 +15,7 @@
     <div class="container d-flex justify-content-evenly align-items-center">
         <img src="{{ asset('img/big_logo.png') }}" alt="Logo">
         <h1>Mural Digital</h1>
-        <p>Faculdade Atenas – {{ Ucfirst($filial->nome_filial) }}</p>
+        <h5>Faculdade Atenas – {{ Ucfirst($filial->nome_filial) }}</h5>
     </div>
 </header>
 
@@ -33,10 +33,14 @@
     <div class="row g-4">
         @forelse($courses as $item)
             <div class="col-6 col-md-3">
-                <a href="#" class="mural-card">
-                    <div class="mural-icon">
+                
+                <a href="/mural/<?php echo $filial->nome_filial;?>/<?php echo $item->route;?>" class="mural-card">
+             
+              
+
+                    <div class="mural-icon" style="background-color:white; border-radius: 5px;">
                         @if($item->icon)
-                            <img src="{{ $item->icon }}" alt="{{ $item->title }}">
+                            <img src="{{ asset('img/cursos/' . $item->icon) }}" alt="{{ $item->title }}">
                         @else
                             <div class="mural-fallback">
                                 {{ mb_substr($item->title, 0, 1) }}
@@ -68,10 +72,10 @@
     <div class="row g-4">
         @foreach($generalLinks as $item)
             <div class="col-6 col-md-3">
-                <a href="#" class="mural-card">
-                    <div class="mural-icon">
+                <a href="/mural/<?php echo $filial->nome_filial;?><?php echo $item->route;?>" class="mural-card">
+                    <div class="mural-icon" style="background-color:  white;">
                         @if(!empty($item['icon']))
-                            <img src="{{ $item['icon'] }}" alt="{{ $item['title'] }}">
+                            <img src="{{ asset('img/icons/' . $item['icon']) }}" alt="{{ $item['title'] }}">
                         @else
                             <div class="mural-fallback">
                                 {{ mb_substr($item['title'], 0, 1) }}
