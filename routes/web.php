@@ -39,7 +39,7 @@ Route::prefix('/adm')->group(function () {
         Route::get('/filiais',[AdminFilialController::class, 'index'])->name('filiais');
         Route::get('/filial/{id}',[AdminFilialController::class, 'show']);
         Route::post('/filial/{id}',[AdminFilialController::class, 'update']);
-        Route::post('/filial',[AdminFilialController::class, 'store']);
+      
         Route::delete('/filial',[AdminFilialController::class, 'destroy']);
 
         Route::get('/cursos',[AdminCursoController::class, 'index'])->name('cursos');
@@ -52,18 +52,21 @@ Route::prefix('/adm')->group(function () {
         Route::get('/dashboard', [DashboardController::class ,'index'])->name('dashboard');
     });
 });
-
+//  Route::post('/filial',[AdminFilialController::class, 'store']);
 
 //INFO - ROTAS DO MURAL DIGITAL
 Route::prefix('/mural/{filial}')->group(function () {
-    Route::get('/{curso}',[MostrarDetalheCursoController::class, 'index']);
+Route::get('/credenciamento-institucional', [MostrarCredenciamentoController::class, 'index']);
+  Route::get('/dirigentes', [MostrarDirigenteController::class, 'index']);
+  Route::get('/legislacoes', [MostrarLegislacaoController::class, 'index']);
+  Route::get('/taxas-servicos', [MostrarServicoController::class, 'index']);
+  Route::get('calendario-escolar', [MostrarCalendarioController::class, 'index']);
 
-    Route::get('/',[MostrarMuralController::class, 'index'])->name('mural');
-    Route::get('/credenciamento-institucional', [MostrarCredenciamentoController::class, 'index']);
-    Route::get('/dirigentes', [MostrarDirigenteController::class, 'index']);
-    Route::get('/legislacoes', [MostrarLegislacaoController::class, 'index']);
-    Route::get('/taxas-servicos', [MostrarServicoController::class, 'index']);
-    Route::get('/calendario-escolar', [MostrarCalendarioController::class, 'index']);
+  Route::get('/{curso}',[MostrarDetalheCursoController::class, 'index']);
+  
+  //INFO ROTAS QUE PRECISAM DE SER DINÂMICAS
+  //ACESSAR POR QUERY_PAGE= (mapa_sala, contrato, ultimas_valiacoes_mec)
+  Route::get('/',[MostrarMuralController::class, 'index'])->name('mural');
 });
 
 
