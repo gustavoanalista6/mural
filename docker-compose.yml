@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: laravel-php73
+    container_name: laravel_app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: laravel_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www
+      - ./docker-config/nginx:/etc/nginx/conf.d  # Certifique-se que esta pasta EXISTE no host
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
