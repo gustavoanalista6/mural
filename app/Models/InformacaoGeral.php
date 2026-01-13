@@ -10,7 +10,7 @@ class InformacaoGeral extends Model
 {
     use HasFactory;
     protected $table = 'informacao';
-    public $fillable = ['title', 'icone', 'filial_id', 'enable'];
+    public $fillable = ['title', 'icon', 'filial_id', 'enable'];
     public $timestamps = true;
 
     public function filial()

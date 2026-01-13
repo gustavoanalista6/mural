@@ -13,6 +13,7 @@ class MostrarMuralController extends Controller
 {
  public function index(Request $request, string $filial)
     {
+    
         $filial = Filial::where('nome_filial', $filial)->firstOrFail();
 
         // Se existir query string ?page=
@@ -26,6 +27,7 @@ class MostrarMuralController extends Controller
 
     private function renderMural(Filial $filial)
     {
+
         return view('pages.mural.index', [
             'filial'        => $filial,
             'courses'       => Curso::where('filial_id', $filial->id)->get(),
@@ -35,6 +37,7 @@ class MostrarMuralController extends Controller
 
     private function renderDynamicPage(string $page, Filial $filial)
     {
+            DD('renderDynamicPage');
         $pageContent = Pagina::where('filial_id', $filial->id)
             ->where('page', $page)
             ->firstOrFail();

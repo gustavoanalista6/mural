@@ -11,5 +11,5 @@ class DetalheCurso extends Model
 
     protected $table = 'detalhe_curso';
 
-    public $fillable = ['title','icon','url_pdf'];
+    public $fillable = ['filial_id', 'title','icon','url_pdf'];
 }

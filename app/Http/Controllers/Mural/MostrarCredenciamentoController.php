@@ -10,8 +10,10 @@ use App\Http\Controllers\Controller;
 class MostrarCredenciamentoController extends Controller
 {
     public function index(Request $request,$filial){
-        $filialId = Filial::where('nome_filial', $request->slug)->get() ?? null;
-        $credenciamento = Credenciamento::where('filial_id', $filialId)->get() ?? null;
-        return view('pages.mural.credenciamento-institucional', compact('credenciamento'));
+    
+        $filial = Filial::where('nome_filial', $filial)->first() ?? null;
+        $data = Credenciamento::where('filial_id', $filial->id)->first() ?? null;
+
+        return view('pages.mural.render-pdf', compact('data'));
     }
 }

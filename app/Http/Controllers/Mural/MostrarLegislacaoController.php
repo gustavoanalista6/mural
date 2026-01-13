@@ -9,9 +9,11 @@ use App\Http\Controllers\Controller;
 
 class MostrarLegislacaoController extends Controller
 {
-     public function index(Request $request,$filial){
-        $filialId = Filial::where('nome_filial', $request->slug)->get() ?? null;
-        $data = Legislacao::where('filial_id', $filialId)->get() ?? null;
-        //TODO RETORNAR O PDF QUE ESTÁ DENTRO DA TABELA
+    public function index(Request $request,$filial){
+    
+        $filial = Filial::where('nome_filial', $filial)->first() ?? null;
+        $documentos = Legislacao::where('filial_id', $filial->id)->get() ?? null;
+
+        return view('pages.mural.legislacoes', compact('documentos', 'filial'));
     }
 }

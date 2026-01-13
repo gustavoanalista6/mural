@@ -9,10 +9,31 @@ use App\Http\Controllers\Controller;
 
 class MostrarDirigenteController extends Controller
 {
-     public function index(Request $request,$filial){
-        $filialId = Filial::where('nome_filial', $request->slug)->get() ?? null;
-        $dirigentes = Dirigente::where('filial_id', $filialId)->get() ?? null;
+    
+   public function index(Request $request, $filial)
+    {
+        // Busca a filial pelo nome_filial
+        $filialModel = Filial::where('nome_filial', $filial)->first();
 
-        return view('pages.mural.dirigentes', compact('dirigentes'));
+        if (!$filialModel) {
+            // Opção A: 404
+            abort(404, 'Filial não encontrada.');
+
+            // Opção B: Redirecionar com flash message
+            // return redirect()->route('mural.index')
+            //     ->with('error', 'Filial não encontrada.');
+        }
+
+
+        $dirigentes = Dirigente::where('filial_id', $filialModel->id)
+            ->orderBy('name')
+            ->get();
+
+    
+        return view('pages.mural.dirigentes', [
+            'dirigentes' => $dirigentes,
+            'filial'     => $filialModel,
+        ]);
     }
+
 }

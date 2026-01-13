@@ -9,10 +9,11 @@ use App\Http\Controllers\Controller;
 
 class MostrarServicoController extends Controller
 {
+   
     public function index(Request $request,$filial){
-        $filialId = Filial::where('nome_filial', $request->slug)->get() ?? null;
-        $data = Servico::where('filial_id', $filialId)->get() ?? null;
-        //TODO RETORNAR O PDF QUE ESTÁ DENTRO DA TABELA
-    }
     
+        $filial = Filial::where('nome_filial', $filial)->first() ?? null;
+        $servicos = Servico::where('filial_id', $filial->id)->get() ?? null;
+        return view('pages.mural.servicos',  compact('servicos', 'filial'));
+    }
 }

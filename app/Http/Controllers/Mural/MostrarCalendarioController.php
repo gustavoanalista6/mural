@@ -10,8 +10,10 @@ use App\Http\Controllers\Controller;
 class MostrarCalendarioController extends Controller
 {
     public function index(Request $request,$filial){
-        $filialId = Filial::where('nome_filial', $request->slug)->get() ?? null;
-        $calendario = CalendarioEscolar::where('filial_id', $filialId)->get() ?? null;
-        return view('pages.mural.calendario-escolar', compact('calendario'));
+    
+        $filial = Filial::where('nome_filial', $filial)->first() ?? null;
+        $data = CalendarioEscolar::where('filial_id', $filial->id)->first() ?? null;
+        $data['title'] = 'calendário escolar';
+        return view('pages.mural.render-pdf', compact('data'));
     }
 }

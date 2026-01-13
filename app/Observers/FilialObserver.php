@@ -17,11 +17,11 @@ class FilialObserver
     {
 
         $informacoes = [
-            ['title' => 'CALENDARIO ESCOLAR', 'icon' => 'teste', 'filial_id' => $filial['id'], 'route' => '/calendario-escolar'],
-            ['title' => 'CREDENCIAMENTO INSTITUCIONAL', 'icon' => 'teste', 'filial_id' => $filial['id'], 'route' => '/credenciamento-institucional'],
-            ['title' => 'DIRIGENTE', 'icon' => 'teste', 'filial_id' => $filial['id'], 'route' => '/dirigentes'],
-            ['title' => 'LEGISLACAO', 'icon' => 'teste', 'filial_id' => $filial['id'], 'route' => '/legislacoes'],
-            ['title' => 'SERVICO', 'icon' => 'teste', 'filial_id' => $filial['id'], 'route' => '/taxas-servicos'],
+            ['title' => 'CALENDARIO ESCOLAR', 'icon' => 'teste', 'enable'=> true,'filial_id' => $filial['id'], 'route' => '/calendario-escolar'],
+            ['title' => 'CREDENCIAMENTO INSTITUCIONAL', 'icon' => 'teste', 'enable'=> true,'filial_id' => $filial['id'], 'route' => '/credenciamento-institucional'],
+            ['title' => 'DIRIGENTE', 'icon' => 'teste', 'enable'=> true,'filial_id' => $filial['id'], 'route' => '/dirigentes'],
+            ['title' => 'LEGISLACAO', 'icon' => 'teste', 'enable'=> true,'filial_id' => $filial['id'], 'route' => '/legislacoes'],
+            ['title' => 'SERVICO', 'icon' => 'teste', 'enable'=> true,'filial_id' => $filial['id'], 'route' => '/taxas-servicos'],
         ];
 
         //dd($informacoes);

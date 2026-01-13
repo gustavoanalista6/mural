@@ -11,6 +11,7 @@ class Servico extends Model
     use HasFactory;
     
     protected $table = 'servicos';
-    public $fillable = ['filial_id','descriminacao', 'valor', 'mensalidades_url_pdf'];
+    public $fillable = ['filial_id','title', 'value', 'first_free_exemption', 'is_monthly'];
     public $timestamps = true;
 }
+

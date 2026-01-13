@@ -2,23 +2,65 @@
 
 namespace App\Http\Controllers\Mural;
 
+use App\Http\Controllers\Controller;
 use App\Models\Curso;
+use App\Models\DetalheCurso;
 use App\Models\Filial;
 use App\Models\Pagina;
+use App\Models\InformacaoGeral;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class MostrarDetalheCursoController extends Controller
 {
-    public function index(Request $request, $filial, $curso){
-        $filial = Filial::where('nome_filial', $filial)->first();
-        $curso = Curso::where('nome_curso', $curso)->first();
-        $page = $request->query('page');
-        $pagina = Pagina::where('filial_id', $filial->id)->where('curso_id', $curso->id)->where('page', $page);
+    public function index(Request $request, $filialSlug, $cursoSlug)
+    {
 
-        //TODO - RENDERIZAR O CONTEUDO
+       
+        $filial = Filial::where('nome_filial', $filialSlug)->firstOrFail();
+        
 
-        dd($page);
+        $curso = Curso::where('route', $cursoSlug)
+            ->where('filial_id', $filial->id)
+            ->firstOrFail();
+
+        // Página dinâmica (?page=)
+        if ($request->filled('page')) {
+            return $this->renderDynamicPage($request->query('page'), $filial);
+        }
+
+        return $this->renderDetail($filial, $curso);
     }
 
+    private function renderDetail(Filial $filial, Curso $curso)
+    {
+       // dd($filial->id,$curso->id);
+        $detalhesCurso = DB::table('detalhe_curso')
+            ->where('filial_id', $filial->id)
+            ->where('curso_id', $curso->id)
+            ->get();
+
+     
+        return view('pages.mural.detail-curso', [
+            'filial' => $filial->nome_filial,
+            'detalhesCurso'       => $detalhesCurso,
+            
+        ]);
+    }
+
+    private function renderDynamicPage(string $page, Filial $filial)
+    {
+        $pageContent = Pagina::where('filial_id', $filial->id)
+            ->where('page', $page)
+            ->firstOrFail();
+
+        if (!empty($pageContent->url_pdf)) {
+            return redirect()->to($pageContent->url_pdf);
+        }
+
+        return view('pages.mural.page', [
+            'filial' => $filial,
+            'page'   => $pageContent
+        ]);
+    }
 }

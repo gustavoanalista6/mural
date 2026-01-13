@@ -11,6 +11,6 @@ class Legislacao extends Model
     use HasFactory;
 
     protected $table = 'legislacao';
-    public $fillable = ['titulo', 'url_pdf', 'filial_id'];
+    public $fillable = ['title', 'url', 'order', 'filial_id'];
     public $timestamps = true;
 }
