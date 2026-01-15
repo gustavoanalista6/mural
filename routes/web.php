@@ -16,6 +16,7 @@ use App\Http\Controllers\Mural\MostrarMuralController;
 use App\Http\Controllers\Mural\MostrarServicoController;
 
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\Mural\MostrarEadController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -60,8 +61,12 @@ Route::get('/credenciamento-institucional', [MostrarCredenciamentoController::cl
   Route::get('/dirigentes', [MostrarDirigenteController::class, 'index']);
   Route::get('/legislacoes', [MostrarLegislacaoController::class, 'index']);
   Route::get('/taxas-servicos', [MostrarServicoController::class, 'index']);
-  Route::get('calendario-escolar', [MostrarCalendarioController::class, 'index']);
-
+  Route::get('/calendario-escolar', [MostrarCalendarioController::class, 'index']);
+  
+  Route::prefix('/ead')->group(function () {
+    Route::get('/',[MostrarEadController::class, 'index']);
+    Route::get('/{curso}',[MostrarDetalheCursoController::class, 'index']);
+  });
   Route::get('/{curso}',[MostrarDetalheCursoController::class, 'index']);
   
   //INFO ROTAS QUE PRECISAM DE SER DINÂMICAS
