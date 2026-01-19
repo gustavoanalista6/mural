@@ -42,7 +42,7 @@ class MostrarDetalheCursoController extends Controller
 
      
         return view('pages.mural.detail-curso', [
-            'filial' => $filial->nome_filial,
+            'filial' => $filial,
             'detalhesCurso'       => $detalhesCurso,
             
         ]);

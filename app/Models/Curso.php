@@ -11,7 +11,7 @@ class Curso extends Model
     use HasFactory;
 
     protected $table = 'cursos';
-    public $fillable = ['filial_id', 'title', 'subtitle', 'icon'];
+    public $fillable = ['filial_id', 'title', 'subtitle', 'icon', 'catgory'];
     public $timestamps = true;
     
 }

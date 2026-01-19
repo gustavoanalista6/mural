@@ -94,8 +94,8 @@
             // Isenção da primeira taxa (suporta duas grafias)
             $isento = (bool) ($item->first_fee_exemption ?? $item->first_free_exemption ?? false);
 
-            // Ordenação fallback: order / ordem / id / posição do loop
-            $ordem = $item->order ?? $item->ordem ?? $item->id ?? $loop->iteration;
+           
+           
 
             // Título fallback
             $titulo = $item->title ?? $item->titulo ?? 'Sem título';
@@ -155,7 +155,7 @@
         @php
             $valor = isset($item->value) ? number_format((float) $item->value, 2, ',', '.') : '0,00';
             $isento = (bool) ($item->first_fee_exemption ?? $item->first_free_exemption ?? false);
-            $ordem = $item->order ?? $item->ordem ?? $item->id ?? $loop->iteration;
+           
             $titulo = $item->title ?? $item->titulo ?? 'Sem título';
         @endphp
 

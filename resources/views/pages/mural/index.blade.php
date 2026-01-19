@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8">
     <title>Mural Digital</title>
@@ -11,93 +12,110 @@
 
 <body>
 
-<header class="mural-header py-4">
-    <div class="container d-flex justify-content-evenly align-items-center">
-        <img src="{{ asset('img/big_logo.png') }}" alt="Logo">
-        <h1>Mural Digital</h1>
-        <h5>Faculdade Atenas – {{ Ucfirst($filial->nome_filial) }}</h5>
-    </div>
-</header>
-
-<main class="container">
-
-    {{-- CURSOS --}}
-    <div class="section-wrap">
-        <div class="section-line"></div>
-        <div class="section-title">
-            <h2>Informações de Cursos</h2>
-            <span>{{ $courses->count() }} itens disponíveis</span>
+    <header class="mural-header py-4">
+        <div class="container d-flex justify-content-evenly align-items-center">
+            <img src="{{ asset('img/big_logo.png') }}" alt="Logo">
+            <h1>Mural Digital</h1>
+            <h5>Faculdade Atenas – {{ Ucfirst($filial->nome_filial) }}</h5>
         </div>
-    </div>
+    </header>
 
-    <div class="row g-4">
-        @forelse($courses as $item)
+    <main class="container">
+
+        {{-- CURSOS --}}
+        <div class="section-wrap">
+            <div class="section-line"></div>
+            <div class="section-title">
+                <h2>Informações de Cursos</h2>
+                <span>{{ $courses->count() }} itens disponíveis</span>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            @forelse($courses as $item)
             <div class="col-6 col-md-3">
-                
-                <a href="/mural/<?php echo $filial->nome_filial;?>/<?php echo $item->route;?>" class="mural-card">
-             
-              
+
+                <a href="/mural/<?php echo $filial->nome_filial; ?>/<?php echo $item->route; ?>" class="mural-card">
+
+
 
                     <div class="mural-icon" style="background-color:white; border-radius: 5px;">
                         @if($item->icon)
-                            <img src="{{ asset('img/cursos/' . $item->icon) }}" alt="{{ $item->title }}">
+                        <img src="{{ asset('img/cursos/' . $item->icon) }}" alt="{{ $item->title }}">
                         @else
-                            <div class="mural-fallback">
-                                {{ mb_substr($item->title, 0, 1) }}
-                            </div>
+                        <div class="mural-fallback">
+                            {{ mb_substr($item->title, 0, 1) }}
+                        </div>
                         @endif
                     </div>
 
                     <p class="mural-title">{{ $item->title }}</p>
 
                     @if($item->subtitle)
-                        <p class="mural-sub">{{ $item->subtitle }}</p>
+                    <p class="mural-sub">{{ $item->subtitle }}</p>
                     @endif
                 </a>
             </div>
-        @empty
+            @empty
             <p class="text-muted">Nenhum curso disponível.</p>
-        @endforelse
-    </div>
-
-    {{-- GERAIS --}}
-    <div class="section-wrap mt-5">
-        <div class="section-line"></div>
-        <div class="section-title">
-            <h2>Informações Gerais</h2>
-            <span>{{ $generalLinks->count() }} itens disponíveis</span>
+            @endforelse
         </div>
-    </div>
 
-    <div class="row g-4">
-        @foreach($generalLinks as $item)
+        {{-- GERAIS --}}
+        <div class="section-wrap mt-5">
+            <div class="section-line"></div>
+            <div class="section-title">
+                <h2>Informações Gerais</h2>
+                <span>{{ $generalLinks->count() }} itens disponíveis</span>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            @foreach($generalLinks as $item)
             <div class="col-6 col-md-3">
-                <a href="/mural/<?php echo $filial->nome_filial;?><?php echo $item->route;?>" class="mural-card">
+
+                <a
+                    <?php
+                    if ($item->url_pdf) {
+                        echo 'target="_blank"';
+                    } ?>
+                    
+                    href="
+                <?php
+                if ($item->url_pdf) {
+                    echo $item->url_pdf;
+                }
+
+                if ($item->route) {
+                    echo `/mural/` . $filial->nome_filial . $item->route;
+                }
+                ?>" class="mural-card">
                     <div class="mural-icon" style="background-color:  white;">
                         @if(!empty($item['icon']))
-                            <img src="{{ asset('img/icons/' . $item['icon']) }}" alt="{{ $item['title'] }}">
+                        <img src="{{ asset('img/icons/' . $item['icon']) }}" alt="{{ $item['title'] }}">
                         @else
-                            <div class="mural-fallback">
-                                {{ mb_substr($item['title'], 0, 1) }}
-                            </div>
+                        <div class="mural-fallback">
+                            {{ mb_substr($item['title'], 0, 1) }}
+                        </div>
                         @endif
                     </div>
 
                     <p class="mural-title">{{ $item['title'] }}</p>
 
                     @if(!empty($item['subtitle']))
-                        <p class="mural-sub">{{ $item['subtitle'] }}</p>
+                    <p class="mural-sub">{{ $item['subtitle'] }}</p>
                     @endif
                 </a>
             </div>
-        @endforeach
-    </div>
+            @endforeach
+        </div>
 
-    <footer class="mural-footer mt-5">
-        © {{ date('Y') }} Faculdade Atenas · Mural Digital
-    </footer>
+        <footer class="mural-footer mt-5">
+            © {{ date('Y') }} Faculdade Atenas · Mural Digital
+        </footer>
 
-</main>
+    </main>
 
 </body>
+
 </html>

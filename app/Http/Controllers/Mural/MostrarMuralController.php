@@ -27,14 +27,15 @@ class MostrarMuralController extends Controller
 
     private function renderMural(Filial $filial)
     {
-
+        
         return view('pages.mural.index', [
             'filial'        => $filial,
-            'courses'       => Curso::where('filial_id', $filial->id)->get(),
+            'courses'       => Curso::where('filial_id', $filial->id)->where('category', '=', 'presencial')->get(),
             'generalLinks'  => InformacaoGeral::where('filial_id', $filial->id)->get(),
         ]);
     }
 
+    ///TODO TESTAR SE POSSO REMOVER
     private function renderDynamicPage(string $page, Filial $filial)
     {
             DD('renderDynamicPage');

@@ -19,9 +19,9 @@
 
     <header class="mural-header py-4">
         <div class="container d-flex justify-content-evenly align-items-center">
-            <img src="{{ asset('img/big_logo.png') }}" alt="Logo" height="60">
-            <h1 class="m-0">Mural Digital</h1>
-            <p class="m-0">Faculdade Atenas – {{ isset($filial) ? ucfirst($filial) : '' }}</p>
+            <img src="{{ asset('img/big_logo.png') }}" alt="Logo">
+            <h1>Mural Digital</h1>
+            <h5>Faculdade Atenas – {{ Ucfirst($filial->nome_filial) }}</h5>
         </div>
     </header>
 
