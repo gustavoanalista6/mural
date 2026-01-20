@@ -15,7 +15,7 @@
     <div class="container d-flex justify-content-evenly align-items-center">
         <img src="{{ asset('img/big_logo.png') }}" alt="Logo">
         <h1>Mural Digital</h1>
-        <p>Faculdade Atenas – {{ Ucfirst($filial->nome_filial) }}</p>
+        <h5>Faculdade Atenas – {{ Ucfirst($filial->nome_filial) }}</h5>
     </div>
 </header>
 

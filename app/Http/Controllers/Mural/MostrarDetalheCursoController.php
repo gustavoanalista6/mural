@@ -24,9 +24,9 @@ class MostrarDetalheCursoController extends Controller
             ->where('filial_id', $filial->id)
             ->firstOrFail();
 
-        // Página dinâmica (?page=)
-        if ($request->filled('page')) {
-            return $this->renderDynamicPage($request->query('page'), $filial);
+        // Página dinâmica (?url=)
+        if ($request->filled('url')) {
+            return $this->renderDynamicPage($request->query('url'));
         }
 
         return $this->renderDetail($filial, $curso);
@@ -48,19 +48,11 @@ class MostrarDetalheCursoController extends Controller
         ]);
     }
 
-    private function renderDynamicPage(string $page, Filial $filial)
+    private function renderDynamicPage(string $url)
     {
-        $pageContent = Pagina::where('filial_id', $filial->id)
-            ->where('page', $page)
-            ->firstOrFail();
 
-        if (!empty($pageContent->url_pdf)) {
-            return redirect()->to($pageContent->url_pdf);
-        }
-
-        return view('pages.mural.page', [
-            'filial' => $filial,
-            'page'   => $pageContent
+       return view('pages.mural.render-pdf',[
+            'data' => ['title' => '', 'url' => $url]
         ]);
     }
 }

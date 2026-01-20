@@ -20,19 +20,22 @@
         <div class="container d-flex justify-content-evenly align-items-center">
             <img src="{{ asset('img/big_logo.png') }}" alt="Logo">
             <h1>Mural Digital</h1>
-            <p>Faculdade Atenas – {{ ucfirst($filial->nome_filial) }}</p>
+            <h5>Faculdade Atenas – {{ ucfirst($filial->nome_filial) }}</h5>
         </div>
     </header>
 
     <main class="container">
 
         {{-- PUBLICAÇÕES --}}
-        <div class="section-wrap">
-            <div class="section-line"></div>
+        <div class="section-line"></div>
+        <div class="section-wrap" style="display:flex; justify-content:space-between">
+            
             <div class="section-title">
                 <h2>NORMATIVAS</h2>
                 <span>{{ $documentos->count() }} itens disponíveis</span>
             </div>
+
+            <a href="{{ url()->previous() }}" class="btn btn-outline-secondary back-btn">← Voltar ao mural</a>
         </div>
 
         @forelse($documentos as $item)
@@ -61,7 +64,7 @@
                         <td class="text-muted">{{ $item->order ?? $item->ordem ?? $loop->iteration }}</td>
                         <td>
                             {{-- Exibe title ou fallback --}}
-                            <a href="{{ $pdfUrl }}" target="_blank" rel="noopener noreferrer" style="color:black; text-decoration:none;">
+                            <a href="?url={{ $pdfUrl }}"  rel="noopener noreferrer" style="color:black; text-decoration:none;">
                                 <strong>{{ $item->title ?? $item->titulo ?? 'Sem título' }}</strong>
                             </a>
                         </td>
@@ -70,8 +73,8 @@
 
                             @if($pdfUrl)
                             <a
-                                href="{{ $pdfUrl }}"
-                                target="_blank"
+                                href="?url={{ $pdfUrl }}"
+                            
                                 rel="noopener noreferrer"
                                 class="btn btn-link p-0"
                                 aria-label="Abrir PDF de {{ $item->title ?? $item->titulo ?? 'documento' }} em nova aba"
@@ -94,7 +97,10 @@
         @empty
         <p class="text-muted">Nenhuma publicação disponível.</p>
         @endforelse
-
+        
+        <div style="text-align:center">
+            <a href="{{ url()->previous() }}" class="btn btn-outline-secondary back-btn">← Voltar ao mural</a>
+        </div>
         <footer class="mural-footer mt-5">
             © {{ date('Y') }} Faculdade Atenas · Mural Digital
         </footer>

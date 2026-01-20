@@ -13,7 +13,19 @@ class MostrarLegislacaoController extends Controller
     
         $filial = Filial::where('nome_filial', $filial)->first() ?? null;
         $documentos = Legislacao::where('filial_id', $filial->id)->get() ?? null;
+    
+        // Página dinâmica (?url=)
+        if ($request->filled('url')) {
+            return $this->renderDynamicPage($request->query('url'));
+        }
 
         return view('pages.mural.legislacoes', compact('documentos', 'filial'));
+    }
+
+    private function renderDynamicPage(string $url)
+    {
+        return view('pages.mural.render-pdf',[
+            'data' => ['title' => '', 'url' => $url]
+        ]);
     }
 }

@@ -16,6 +16,7 @@ use App\Http\Controllers\Mural\MostrarMuralController;
 use App\Http\Controllers\Mural\MostrarServicoController;
 
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\MostrarDocumentoDetalheCursoController;
 use App\Http\Controllers\Mural\MostrarEadController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;

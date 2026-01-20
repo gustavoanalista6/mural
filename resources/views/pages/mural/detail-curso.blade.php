@@ -52,13 +52,7 @@
 
                 @if(!empty($pdfUrl))
 
-
-                @else
-                <p class="text-muted mb-0">
-                    Nenhum material disponível no momento.
-                </p>
-                @endif
-                <a href="{{ $pdfUrl }}"
+                <a href="?url={{ $pdfUrl }}"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="w-100" style="text-decoration: none; color: black;">
@@ -100,6 +94,10 @@
 
                     </div>
                 </a>
+                @else
+
+                @endif
+
             </div>
             @empty
             <div class="col-12">
@@ -112,9 +110,7 @@
 
         {{-- VOLTAR --}}
         <div class="text-center mt-2">
-            <a href="{{ url()->previous() }}" class="btn btn-outline-secondary">
-                ← Voltar
-            </a>
+            <a href="{{ url()->previous() }}" class="btn btn-outline-secondary back-btn">← Voltar ao mural</a>
         </div>
 
         <footer class="mural-footer mt-5 text-center">

@@ -39,7 +39,7 @@
         <div class="container d-flex justify-content-evenly align-items-center">
             <img src="{{ asset('img/big_logo.png') }}" alt="Logo">
             <h1>Mural Digital</h1>
-            <p>Faculdade Atenas – {{ ucfirst($filial->nome_filial) }}</p>
+            <h5>Faculdade Atenas – {{ ucfirst($filial->nome_filial) }}</h5>
         </div>
     </header>
 
@@ -62,11 +62,17 @@
 
     {{-- ===== Seção CURSOS (mensalidade) ===== --}}
     <div class="section-wrap">
+        
         <div class="section-line"></div>
-        <div class="section-title d-flex align-items-baseline gap-3">
-            <h2 class="m-0">CURSOS</h2>
-            <span>{{ $cursos->count() }} itens disponíveis</span>
+        <div class="d-flex justify-content-between align-items-center mb-3" style="width: 100%;">
+            <div class="section-title d-flex align-items-baseline gap-3">
+                
+                <h2 class="m-0">CURSOS</h2>
+                <span>{{ $cursos->count() }} itens disponíveis</span>
+            </div>
+            <a href="{{ url()->previous() }}" class="btn btn-outline-secondary back-btn">← Voltar ao mural</a>
         </div>
+
     </div>
 
    
@@ -78,7 +84,7 @@
                 <table class="table table-sm align-middle">
                     <thead>
                     <tr>
-                        <th scope="col" class="text-nowrap">Ordem</th>
+       
                         <th scope="col">Título</th>
                         <th scope="col" class="text-end text-nowrap">Valor</th>
                        
@@ -94,16 +100,15 @@
             // Isenção da primeira taxa (suporta duas grafias)
             $isento = (bool) ($item->first_fee_exemption ?? $item->first_free_exemption ?? false);
 
-           
-           
+            // Ordenação fallback: order / ordem / id / posição do loop
+
 
             // Título fallback
             $titulo = $item->title ?? $item->titulo ?? 'Sem título';
         @endphp
 
         <tr>
-            {{-- Ordem --}}
-            <td class="text-muted">{{ $ordem }}</td>
+   
 
             {{-- Título + badge "Mensal" --}}
             <td>
@@ -143,7 +148,7 @@
                 <table class="table table-sm align-middle">
                     <thead>
                     <tr>
-                        <th scope="col" class="text-nowrap">Ordem</th>
+          
                         <th scope="col">Título</th>
                         <th scope="col" class="text-end text-nowrap">Valor</th>
                         <th scope="col" class="text-center text-nowrap">Isento 1ª via</th>
@@ -155,13 +160,12 @@
         @php
             $valor = isset($item->value) ? number_format((float) $item->value, 2, ',', '.') : '0,00';
             $isento = (bool) ($item->first_fee_exemption ?? $item->first_free_exemption ?? false);
-           
+          
             $titulo = $item->title ?? $item->titulo ?? 'Sem título';
         @endphp
 
         <tr>
-            {{-- Ordem --}}
-            <td class="text-muted">{{ $ordem }}</td>
+
 
             {{-- Título --}}
             <td>

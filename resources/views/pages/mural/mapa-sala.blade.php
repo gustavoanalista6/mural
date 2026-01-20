@@ -1,1 +1,0 @@
-<h1>Mapa de sala</h1>

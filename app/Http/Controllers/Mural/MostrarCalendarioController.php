@@ -13,7 +13,7 @@ class MostrarCalendarioController extends Controller
     
         $filial = Filial::where('nome_filial', $filial)->first() ?? null;
         $data = CalendarioEscolar::where('filial_id', $filial->id)->first() ?? null;
-        $data['title'] = 'calendário escolar';
+        $data['title'] = '';
         return view('pages.mural.render-pdf', compact('data'));
     }
 }

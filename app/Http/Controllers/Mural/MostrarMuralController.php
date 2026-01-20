@@ -17,8 +17,8 @@ class MostrarMuralController extends Controller
         $filial = Filial::where('nome_filial', $filial)->firstOrFail();
 
         // Se existir query string ?page=
-        if ($request->filled('page')) {
-            return $this->renderDynamicPage($request->query('page'), $filial);
+        if ($request->filled('url')) {
+            return $this->renderDynamicPage($request->query('url'));
         }
 
         // Mural padrão
@@ -35,23 +35,11 @@ class MostrarMuralController extends Controller
         ]);
     }
 
-    ///TODO TESTAR SE POSSO REMOVER
-    private function renderDynamicPage(string $page, Filial $filial)
+
+    private function renderDynamicPage(string $url)
     {
-            DD('renderDynamicPage');
-        $pageContent = Pagina::where('filial_id', $filial->id)
-            ->where('page', $page)
-            ->firstOrFail();
-
-        // Página em PDF
-        if (!empty($pageContent->url_pdf)) {
-            return redirect()->to($pageContent->url_pdf);
-        }
-
-        // Página HTML
-        return view('pages.mural.page', [
-            'filial' => $filial,
-            'page'   => $pageContent
+        return view('pages.mural.render-pdf',[
+            'data' => ['title' => '', 'url' => $url]
         ]);
     }
 }

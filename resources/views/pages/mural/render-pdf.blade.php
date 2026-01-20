@@ -45,7 +45,7 @@
         <div class="section-wrap">
             <div class="section-line"></div>
             <div class="section-title">
-                <h2>{{$data->title}}</h2>
+                <h2>{{$data['title'] }}</h2>
                
             </div>
         </div>
@@ -57,7 +57,7 @@
 
     <div class="pdf-container">
         <iframe 
-            src="{{ $data->url }}"
+            src="{{ $data['url'] }}"
             title="Visualização do PDF">
         </iframe>
     </div>
