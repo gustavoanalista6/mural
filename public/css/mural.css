@@ -215,3 +215,31 @@ body{
 body{
   background: #f3f5f9;
 }
+
+
+
+.header-divider {
+    width: 2px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.3);
+    margin: 0 20px;
+}
+
+.atenas-brand {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-main {
+    font-weight: 800;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.brand-sub {
+    font-size: 0.75rem;
+    color: var(--green);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}

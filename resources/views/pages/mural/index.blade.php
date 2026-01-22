@@ -11,15 +11,17 @@
 </head>
 
 <body>
-
-    <header class="mural-header py-4">
-        <div class="container d-flex justify-content-evenly align-items-center">
-            <img src="{{ asset('img/big_logo.png') }}" alt="Logo">
-            <h1>Mural Digital</h1>
-            {{-- Usando diretiva Blade para formatar texto --}}
-            <h5>Faculdade Atenas – {{ ucfirst($filial->nome_filial) }}</h5>
+<header class="mural-header py-4">
+    <div class="container d-flex justify-content-evenly align-items-center">
+        <img src="{{ asset('img/big_logo.png') }}" alt="Logo">
+        <h1 class="mb-0">MURAL DIGITAL</h1>
+        <div class="header-divider"></div>
+        <div class="atenas-brand">
+            <span class="brand-main">FACULDADE ATENAS</span>
+            <span class="brand-sub">{{ ucfirst($filial->nome_filial) }}</span>
         </div>
-    </header>
+    </div>
+</header>
 
     <main class="container">
 
@@ -73,11 +75,8 @@
             @foreach($generalLinks as $item)
             <div class="col-6 col-md-3">
                 <a 
-                    {{-- Condição para o target _blank --}}
-                    @if($item->url_pdf) target="_blank" @endif
-
                     {{-- Lógica do link centralizada no href --}}
-                    href="{{ $item->url_pdf ? '?url=' . $item->url_pdf : url("/mural/{$filial->nome_filial}/{$item->route}") }}" 
+                    href="{{ $item->url_pdf ? '?url=' . $item->url_pdf : url("/mural/{$filial->nome_filial}{$item->route}") }}" 
                     
                     class="mural-card"
                 >

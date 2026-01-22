@@ -11,14 +11,14 @@ use App\Http\Controllers\Controller;
 
 class MostrarMuralController extends Controller
 {
- public function index(Request $request, string $filial)
+    public function index(Request $request, string $filial)
     {
     
         $filial = Filial::where('nome_filial', $filial)->firstOrFail();
 
         // Se existir query string ?page=
         if ($request->filled('url')) {
-            return $this->renderDynamicPage($request->query('url'));
+            return $this->renderDynamicPage($request->query('url'), $filial);
         }
 
         // Mural padrão
@@ -36,10 +36,11 @@ class MostrarMuralController extends Controller
     }
 
 
-    private function renderDynamicPage(string $url)
+    private function renderDynamicPage(string $url, $filial)
     {
         return view('pages.mural.render-pdf',[
-            'data' => ['title' => '', 'url' => $url]
+            'data' => ['title' => '', 'url' => $url], 
+            'filial' => $filial
         ]);
     }
 }

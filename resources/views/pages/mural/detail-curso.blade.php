@@ -17,13 +17,17 @@
 
 <body>
 
-    <header class="mural-header py-4">
-        <div class="container d-flex justify-content-evenly align-items-center">
-            <img src="{{ asset('img/big_logo.png') }}" alt="Logo">
-            <h1>Mural Digital</h1>
-            <h5>Faculdade Atenas – {{ Ucfirst($filial->nome_filial) }}</h5>
+<header class="mural-header py-4">
+    <div class="container d-flex justify-content-evenly align-items-center">
+        <img src="{{ asset('img/big_logo.png') }}" alt="Logo">
+        <h1 class="mb-0">MURAL DIGITAL</h1>
+        <div class="header-divider"></div>
+        <div class="atenas-brand">
+            <span class="brand-main">FACULDADE ATENAS</span>
+            <span class="brand-sub">{{ ucfirst($filial->nome_filial) }}</span>
         </div>
-    </header>
+    </div>
+</header>
 
     <main class="container">
 

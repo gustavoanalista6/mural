@@ -16,16 +16,17 @@ class MostrarLegislacaoController extends Controller
     
         // Página dinâmica (?url=)
         if ($request->filled('url')) {
-            return $this->renderDynamicPage($request->query('url'));
+            return $this->renderDynamicPage($request->query('url'), $filial);
         }
 
         return view('pages.mural.legislacoes', compact('documentos', 'filial'));
     }
 
-    private function renderDynamicPage(string $url)
+    private function renderDynamicPage(string $url, $filial)
     {
         return view('pages.mural.render-pdf',[
-            'data' => ['title' => '', 'url' => $url]
+            'data' => ['title' => '', 'url' => $url], 
+            'filial' => $filial
         ]);
     }
 }

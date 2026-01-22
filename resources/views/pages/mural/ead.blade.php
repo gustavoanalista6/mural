@@ -14,20 +14,29 @@
 <header class="mural-header py-4">
     <div class="container d-flex justify-content-evenly align-items-center">
         <img src="{{ asset('img/big_logo.png') }}" alt="Logo">
-        <h1>Mural Digital</h1>
-        <h5>Faculdade Atenas – {{ Ucfirst($filial->nome_filial) }}</h5>
+        <h1 class="mb-0">MURAL DIGITAL</h1>
+        <div class="header-divider"></div>
+        <div class="atenas-brand">
+            <span class="brand-main">FACULDADE ATENAS</span>
+            <span class="brand-sub">{{ ucfirst($filial->nome_filial) }}</span>
+        </div>
     </div>
 </header>
 
 <main class="container">
 
     {{-- CURSOS --}}
-    <div class="section-wrap">
-        <div class="section-line"></div>
-        <div class="section-title">
-            <h2>Informações de Cursos</h2>
-            <span>{{ $courses->count() }} itens disponíveis</span>
+  <div style="display: flex; justify-content:space-between">
+        <div class="section-wrap">
+            <div class="section-line"></div>
+            <div class="section-title">
+                <h2>Informações de Cursos</h2>
+                <span>{{ $courses->count() }} itens disponíveis</span>
+            </div>
         </div>
+
+         <div style="display:flex; align-items:center"><a href="{{ url()->previous() }}" class="btn btn-outline-secondary back-btn">← Voltar ao mural</a></div>
+        
     </div>
 
     <div class="row g-4">

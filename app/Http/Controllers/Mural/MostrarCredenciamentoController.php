@@ -14,6 +14,6 @@ class MostrarCredenciamentoController extends Controller
         $filial = Filial::where('nome_filial', $filial)->first() ?? null;
         $data = Credenciamento::where('filial_id', $filial->id)->first() ?? null;
         $data['title'] = '';
-        return view('pages.mural.render-pdf', compact('data'));
+        return view('pages.mural.render-pdf', compact('data', 'filial'));
     }
 }

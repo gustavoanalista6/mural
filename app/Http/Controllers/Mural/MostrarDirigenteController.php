@@ -26,9 +26,8 @@ class MostrarDirigenteController extends Controller
 
 
         $dirigentes = Dirigente::where('filial_id', $filialModel->id)
-            ->orderBy('name')
+            ->orderBy('id')
             ->get();
-
     
         return view('pages.mural.dirigentes', [
             'dirigentes' => $dirigentes,
