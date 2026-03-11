@@ -16,6 +16,7 @@ class MostrarMuralController extends Controller
     
         $filial = Filial::where('nome_filial', $filial)->firstOrFail();
 
+
         // Se existir query string ?page=
         if ($request->filled('url')) {
             return $this->renderDynamicPage($request->query('url'), $filial);
